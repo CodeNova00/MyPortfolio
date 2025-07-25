@@ -1,3 +1,5 @@
+"use client";
+
 import { Approach } from "@/components/approach";
 import { Clients } from "@/components/clients";
 import { Experience } from "@/components/experience";

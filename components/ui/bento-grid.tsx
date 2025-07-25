@@ -1,9 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-import Lottie from "react-lottie";
 
 import { links } from "@/config";
 import { techStack } from "@/data";
@@ -14,6 +14,11 @@ import { BackgroundGradientAnimation } from "./background-gradient-animation";
 import { MagicButton } from "./magic-button";
 
 import { GridGlobe } from "../grid-globe";
+
+// Dynamic import for Lottie to disable SSR
+const DynamicLottie = dynamic(() => import("react-lottie").then((mod) => mod.default), {
+  ssr: false,
+});
 
 export const BentoGrid = ({
   className,
@@ -165,7 +170,7 @@ export const BentoGridItem = ({
                 tabIndex={-1}
                 className="pointer-events-none absolute -bottom-5 right-0 cursor-default"
               >
-                <Lottie
+                <DynamicLottie
                   options={{
                     loop: copied,
                     autoplay: copied,
